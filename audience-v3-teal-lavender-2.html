@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasleen Arora</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0e0e12;
+  --surface: #16161c;
+  --border: rgba(255,255,255,0.07);
+  --text: #f0eff5;
+  --muted: rgba(240,239,245,0.38);
+  --grad-a: #00c9a7;
+  --grad-b: #a78bfa;
+  --grad-c: #7dd3fc;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Audience pills */
+.audience-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+}
+.audience-nav::-webkit-scrollbar { display: none; }
+
+.pill {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.pill:hover {
+  color: var(--text);
+  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.04);
+}
+.pill.active {
+  background: linear-gradient(var(--bg), var(--bg)) padding-box,
+              linear-gradient(90deg, var(--grad-a), var(--grad-b)) border-box;
+  border: 1px solid transparent;
+  color: var(--text);
+}
+
+/* Headline */
+.headline-wrap {
+  position: relative;
+  min-height: 160px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.headline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(24px, 3.8vw, 52px);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  position: absolute;
+  top: 0; left: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.38s ease, transform 0.38s ease;
+  pointer-events: none;
+}
+.headline.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+  html, body { padding: 36px 20px; align-items: flex-start; }
+  .audience-nav { gap: 6px; margin-bottom: 32px; }
+  .pill { font-size: 12px; padding: 6px 13px; }
+  .headline { font-size: clamp(20px, 6vw, 28px); line-height: 1.35; }
+  .headline-wrap { min-height: 200px; }
+}
+
+/* Gradient words */
+.grad {
+  background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.grad-green {
+  background: linear-gradient(90deg, var(--grad-c), #5170ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Code style for engineers */
+.code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.92em;
+  background: rgba(81,112,255,0.1);
+  border: 1px solid rgba(81,112,255,0.2);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: #a8b8ff;
+  -webkit-text-fill-color: #a8b8ff;
+}
+
+/* Strikethrough */
+.strike {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+/* Divider line */
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="audience-nav" role="tablist">
+    <button class="pill active" data-target="anyone">For anyone</button>
+    <button class="pill" data-target="recruiters">Recruiters</button>
+    <button class="pill" data-target="directors">Design Directors</button>
+    <button class="pill" data-target="researchers">Researchers</button>
+    <button class="pill" data-target="designers">Product Designers</button>
+    <button class="pill" data-target="pms">Product Managers</button>
+    <button class="pill" data-target="engineers">Engineers</button>
+  </nav>
+
+  <div class="headline-wrap" id="headlineWrap">
+
+    <p class="headline visible" id="anyone">
+      I identify as a thinker, a creator &amp; an enabler&nbsp;: design is <span class="strike">my facilitator</span> <span class="grad">my superpower!</span>
+    </p>
+
+    <p class="headline" id="recruiters">
+      I'm a <span class="grad">UX/UI Designer</span> with 5+ years of experience across brand and product, at organizations large and small. I'm <span class="grad">actively looking</span> for a new role.
+    </p>
+
+    <p class="headline" id="directors">
+      I'm a <span class="grad">collaborative designer</span> who thrives on feedback (users &amp; peers), transforming abstract ideas into precise, impactful solutions that align with the bigger picture.
+    </p>
+
+    <p class="headline" id="researchers">
+      My interests lie in investigating how <span class="grad">socio-technical systems</span> shape agency, behavior and power at scale. As both practitioner and critic within product ecosystems, I aim to explore <span class="grad-green">theory-informed, design-led paths</span> toward responsible innovation.
+    </p>
+
+    <p class="headline" id="designers">
+      I'm a <span class="grad">systems thinker</span> with a sharp eye for detail. From shaping the process to refining every pixel, I'll work alongside you to deliver results that matter.
+    </p>
+
+    <p class="headline" id="pms">
+      I bring a <span class="grad">full-spectrum approach</span> to product; from discovery &amp; vision to strategy &amp; execution. I'll collaborate closely with you to create <span class="grad">maximum impact.</span>
+    </p>
+
+    <p class="headline" id="engineers">
+      I'm proficient in <span class="code">{prototyping}</span> &amp;&amp; <span class="code">{user testing}</span>. Although <span class="code">(I'm ≠ coder)</span>, I can speak /tech fluently; I've collaborated on everything from <span class="code">"front-end"</span> designs to <span class="code">"back-end"</span> workflows, ensuring they're <span class="code">(pixel.perfect)</span> + successfully deployed in production.
+    </p>
+
+  </div>
+
+
+</div>
+
+<script>
+const pills = document.querySelectorAll('.pill');
+const headlines = document.querySelectorAll('.headline');
+let current = 'anyone';
+
+pills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    const target = pill.dataset.target;
+    if (target === current) return;
+
+    // swap pills
+    document.querySelector('.pill.active').classList.remove('active');
+    pill.classList.add('active');
+
+    // swap headline
+    const outEl = document.getElementById(current);
+    const inEl  = document.getElementById(target);
+
+    outEl.classList.remove('visible');
+    setTimeout(() => {
+      inEl.classList.add('visible');
+      // update wrap min-height to new content height
+      document.getElementById('headlineWrap').style.minHeight = inEl.scrollHeight + 'px';
+    }, 200);
+
+    current = target;
+  });
+});
+
+// Set initial height
+window.addEventListener('load', () => {
+  const el = document.getElementById('anyone');
+  document.getElementById('headlineWrap').style.minHeight = el.scrollHeight + 'px';
+});
+</script>
+</body>
+</html>
